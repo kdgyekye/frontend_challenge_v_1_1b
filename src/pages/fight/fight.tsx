@@ -1,4 +1,3 @@
-import { cpuUsage } from 'process';
 import React, { Fragment, FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -87,7 +86,7 @@ const Fight: FC<IFightProps> = (props: any) => {
         }
       }, 500);
     }
-  }, [userCharacter, computerCharacter]);
+  }, [userCharacter, computerCharacter, rounds]);
 
   const calculateWinner = () => {
     if (userScore > compScore) {

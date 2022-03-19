@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment} from 'react'
+import React, {Fragment} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 const Home = () => {

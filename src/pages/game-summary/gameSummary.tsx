@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getUserChoices, IAppState, getCompChoices, newGame } from '../../getStore';
-import { Character } from '../../utils/characters';
+import { getUserChoices, IAppState, getCompChoices, newGame, getUserScore, getComputerScore } from '../../getStore';
+//import { Character } from '../../utils/characters';
 import {useNavigate} from 'react-router-dom';
 
 interface Summary {
@@ -12,7 +12,7 @@ interface Summary {
 
 const cols = ['round', 'user', 'computer'];
 const GameSummary = (props: any) => {
-  const { userChoices, compChoices, playNewGame } = props;
+  const { userChoices, compChoices, playNewGame, userScore, compScore } = props;
   const gameSummary: Summary[] = [];
 
   for (var i = 0; i < userChoices.length; i++) {
@@ -40,6 +40,11 @@ const GameSummary = (props: any) => {
               <div className='p-2'>Play New Game</div>
               </div>  
           <h1 className="text-3xl font-bold my-5">Game Summary</h1>
+          <div className='flex justify-between mb-5'>
+              <div className='text-xl'>User: <span className='font-bold text-green-500'>{userScore}</span></div>
+              <div>Final Score</div>
+              <div className='text-xl'>User: <span className='font-bold text-red-500'>{compScore}</span></div>
+          </div>
           <table>
             <thead>
               <tr>
@@ -78,6 +83,8 @@ const mapStateToProps = (state: IAppState) => {
   return {
     userChoices: getUserChoices(state),
     compChoices: getCompChoices(state),
+    userScore: getUserScore(state),
+    compScore: getComputerScore(state),
   };
 };
 
